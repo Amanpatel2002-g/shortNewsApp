@@ -49,7 +49,7 @@ class Article {
     String ?title;
     String ?description;
     String ?url;
-    String ?urlToImage;
+    String urlToImage;
     DateTime ?publishedAt;
     String ?content;
 
@@ -59,7 +59,7 @@ class Article {
         title: json["title"],
         description: json["description"],
         url: json["url"],
-        urlToImage: json["urlToImage"],
+        urlToImage: json["urlToImage"]!=null?json['urlToImage']:"https://thumbs.dreamstime.com/b/no-image-icon-vector-available-picture-symbol-isolated-white-background-suitable-user-interface-element-205805243.jpg",
         publishedAt: DateTime.parse(json["publishedAt"]),
         content: json["content"],
     );

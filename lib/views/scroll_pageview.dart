@@ -49,7 +49,7 @@ class _ScrollPageViewState extends State<ScrollPageView> {
           if (isloading == false) {
             if (list != null) {
               return NewsPage(
-                  imagelink: list![index].urlToImage!,
+                  imagelink: list![index].urlToImage,
                   headingText: list![index].title!,
                   testText: list![index].description!,
                   articleLink: list![index].url!);

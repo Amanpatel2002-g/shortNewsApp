@@ -1,15 +1,17 @@
+import 'dart:async';
 import 'dart:math';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 // import 'package:shortnewsapp/views/constants.dart';
 
 class NewsPage extends StatelessWidget {
-  final String? imagelink;
+  String imagelink;
   final String headingText;
   final String testText;
   final String articleLink;
-  const NewsPage(
+   NewsPage(
       {Key? key,
       required this.imagelink,
       required this.headingText,
@@ -18,6 +20,7 @@ class NewsPage extends StatelessWidget {
       : super(key: key);
   getimagefromlink(link) {
     try {
+      scheduleMicrotask(() => print('MT B'));
       return Image.network(link);
     } catch (e) {
       print("The error in the getimagefromlink is ${e.toString()}");
@@ -27,6 +30,10 @@ class NewsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (imagelink == null) {
+      imagelink =
+          "https://thumbs.dreamstime.com/b/no-image-icon-vector-available-picture-symbol-isolated-white-background-suitable-user-interface-element-205805243.jpg";
+    }
     return Scaffold(
       body: Column(
         mainAxisSize: MainAxisSize.max,
@@ -37,7 +44,26 @@ class NewsPage extends StatelessWidget {
                 Container(
                   decoration:
                       BoxDecoration(borderRadius: BorderRadius.circular(25)),
-                  child: getimagefromlink(imagelink),
+                  child: CachedNetworkImage(
+                    imageUrl: imagelink,
+                    placeholder: (context, url) {
+                      return const Center(
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                        ),
+                      );
+                    },
+                    // errorWidget: (context, url, error) {
+                    //   // This was the reason for exception being triggered and rendered!
+                    //   debugPrint(error); // TODO: Remove this line!
+                    //   return const Center(
+                    //     child: Text(
+                    //       'Error',
+                    //       style: TextStyle(color: Colors.red),
+                    //     ),
+                    //   );
+                    // },
+                  ),
                 ),
                 const SizedBox(
                   height: 10,
