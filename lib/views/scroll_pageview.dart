@@ -24,18 +24,20 @@ class _ScrollPageViewState extends State<ScrollPageView> {
     }
   }
 
-  List<Article>? list;
+  late List<Article> list;
   bool isloading = true;
   getdata() async {
     var mapfromapi = await ApiWork.fetechNewsDatatomap();
     // ignore: unrelated_type_equality_checks
     if (mapfromapi != Null) {
-      list = mapfromapi.articles;
+      list = mapfromapi.articles!;
       setState(() {
         isloading = false;
       });
     } else {
-      isloading = true;
+      setState(() {
+        isloading = true;
+      });
     }
   }
 
@@ -45,12 +47,14 @@ class _ScrollPageViewState extends State<ScrollPageView> {
   Widget build(BuildContext context) {
     return PageView.builder(
         scrollDirection: Axis.vertical,
+        itemCount: list.length,
         itemBuilder: (context, index) {
           if (isloading == false) {
+            // ignore: unnecessary_null_comparison
             if (list != null) {
               return NewsPage(
                   imagelink: list![index].urlToImage,
-                  headingText: list![index].title!,
+                  headingText: (list![index].title),
                   testText: list![index].description!,
                   articleLink: list![index].url!);
             } else {

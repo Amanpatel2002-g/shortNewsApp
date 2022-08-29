@@ -11,7 +11,7 @@ class NewsPage extends StatelessWidget {
   final String headingText;
   final String testText;
   final String articleLink;
-   NewsPage(
+  NewsPage(
       {Key? key,
       required this.imagelink,
       required this.headingText,
@@ -93,19 +93,26 @@ class NewsPage extends StatelessWidget {
               ],
             ),
           ),
+          const Spacer(),
           GestureDetector(
             onTapDown: (details) {},
             child: Container(
               height: MediaQuery.of(context).size.height - 400 - 272,
               width: MediaQuery.of(context).size.width,
               alignment: Alignment.bottomCenter,
+              decoration:
+                  BoxDecoration(borderRadius: BorderRadius.circular(15)),
               child: Card(
                 color: Colors.white60,
                 elevation: 5,
+                
                 child: ListTile(title: Text(articleLink)),
               ),
             ),
-          )
+          ),
+          const SizedBox(
+            height: 10,
+          ),
         ],
       ),
     );

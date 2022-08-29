@@ -46,7 +46,7 @@ class Article {
 
     Source ?source;
     String ?author;
-    String ?title;
+    String title;
     String ?description;
     String ?url;
     String urlToImage;
@@ -56,7 +56,8 @@ class Article {
     factory Article.fromJson(Map<String, dynamic> json) => Article(
         source: Source.fromJson(json["source"]),
         author: json["author"],
-        title: json["title"],
+        // ignore: prefer_if_null_operators
+        title: json["title"]!=null?json["title"]:"no title present",
         description: json["description"],
         url: json["url"],
         urlToImage: json["urlToImage"]!=null?json['urlToImage']:"https://thumbs.dreamstime.com/b/no-image-icon-vector-available-picture-symbol-isolated-white-background-suitable-user-interface-element-205805243.jpg",

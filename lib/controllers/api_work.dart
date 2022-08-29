@@ -2,10 +2,11 @@ import 'dart:convert';
 import '../models/news_data.dart';
 import 'package:http/http.dart' as http;
 
-class ApiWork{
+class ApiWork {
   static Future<NewsData> fetechNewsDatatomap() async {
+    String tosearch = "biden";
     String url =
-        "https://newsapi.org/v2/everything?q=google&apiKey=488f3c15eb27460da90b5b8aa0180f54";
+        "https://newsapi.org/v2/everything?q=${tosearch}&apiKey=488f3c15eb27460da90b5b8aa0180f54";
     final response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
       return NewsData.fromJson(jsonDecode(response.body));
