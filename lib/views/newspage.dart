@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 // import 'package:shortnewsapp/views/constants.dart';
 
 class NewsPage extends StatelessWidget {
@@ -95,7 +96,9 @@ class NewsPage extends StatelessWidget {
           ),
           const Spacer(),
           GestureDetector(
-            onTapDown: (details) {},
+            onTap: () async {
+              await launchUrl(Uri.parse(articleLink));
+            },
             child: Container(
               height: MediaQuery.of(context).size.height - 400 - 272,
               width: MediaQuery.of(context).size.width,
@@ -105,7 +108,6 @@ class NewsPage extends StatelessWidget {
               child: Card(
                 color: Colors.white60,
                 elevation: 5,
-                
                 child: ListTile(title: Text(articleLink)),
               ),
             ),

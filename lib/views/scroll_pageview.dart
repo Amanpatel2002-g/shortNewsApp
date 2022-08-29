@@ -15,17 +15,16 @@ class ScrollPageView extends StatefulWidget {
 }
 
 class _ScrollPageViewState extends State<ScrollPageView> {
+  List<Article>? list;
+  bool isloading = true;
   @override
   void initState() {
-    if (isloading == true) {
+    setState(() {
       getdata();
-    } else {
-      super.initState();
-    }
+    });
+    super.initState();
   }
 
-  late List<Article> list;
-  bool isloading = true;
   getdata() async {
     var mapfromapi = await ApiWork.fetechNewsDatatomap();
     // ignore: unrelated_type_equality_checks
@@ -33,10 +32,6 @@ class _ScrollPageViewState extends State<ScrollPageView> {
       list = mapfromapi.articles!;
       setState(() {
         isloading = false;
-      });
-    } else {
-      setState(() {
-        isloading = true;
       });
     }
   }
@@ -47,7 +42,7 @@ class _ScrollPageViewState extends State<ScrollPageView> {
   Widget build(BuildContext context) {
     return PageView.builder(
         scrollDirection: Axis.vertical,
-        itemCount: list.length,
+        itemCount: list?.length,
         itemBuilder: (context, index) {
           if (isloading == false) {
             // ignore: unnecessary_null_comparison
@@ -58,7 +53,7 @@ class _ScrollPageViewState extends State<ScrollPageView> {
                   testText: list![index].description!,
                   articleLink: list![index].url!);
             } else {
-              return const Text("15");
+              return const Text("The list is null");
             }
           } else {
             return const Center(
