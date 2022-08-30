@@ -41,25 +41,28 @@ class _ScrollPageViewState extends State<ScrollPageView> {
   @override
   Widget build(BuildContext context) {
     return PageView.builder(
-        scrollDirection: Axis.vertical,
-        itemCount: list?.length,
-        itemBuilder: (context, index) {
-          if (isloading == false) {
-            // ignore: unnecessary_null_comparison
-            if (list != null) {
-              return NewsPage(
-                  imagelink: list![index].urlToImage,
-                  headingText: (list![index].title),
-                  testText: list![index].description!,
-                  articleLink: list![index].url!);
+          scrollDirection: Axis.vertical,
+          itemCount: list?.length,
+          itemBuilder: (context, index) {
+            if (isloading == false) {
+              // ignore: unnecessary_null_comparison
+              if (list != null) {
+                String contenttobesent = list![index].content!;
+                var topresent =
+                    contenttobesent.length < 600 ? contenttobesent.length : 600;
+                return NewsPage(
+                    imagelink: list![index].urlToImage,
+                    headingText: (list![index].title),
+                    testText: list![index].description!,
+                    articleLink: list![index].url!);
+              } else {
+                return const Text("The list is null");
+              }
             } else {
-              return const Text("The list is null");
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
             }
-          } else {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-        });
+          });
   }
 }
