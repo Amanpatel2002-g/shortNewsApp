@@ -5,24 +5,20 @@ import 'package:shortnewsapp/controllers/api_work.dart';
 import 'package:shortnewsapp/views/authentication/sign_in.dart';
 import 'package:shortnewsapp/views/authentication/sign_up.dart';
 import 'package:shortnewsapp/views/constants.dart';
-import 'package:shortnewsapp/views/home_page.dart';
-import 'package:shortnewsapp/views/newspage.dart';
 import 'package:shortnewsapp/views/scroll_pageview.dart';
-import 'package:shortnewsapp/views/search/search_page.dart';
-import 'package:shortnewsapp/views/testpage.dart';
 
 void main(List<String> args) async {
   Get.put(ConstantsVariables());
   Get.put(ApiWork());
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyshortNewsApp());
+  runApp(const MyshortNewsApp());
 }
 
 final ConstantsVariables cv = Get.find();
 
 class MyshortNewsApp extends StatelessWidget {
-  // const MyshortNewsApp({Key? key}) : super(key: key);
+  const MyshortNewsApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -40,6 +36,5 @@ class MyshortNewsApp extends StatelessWidget {
           }
         })));
         
-        // home: SearchPage());
   }
 }

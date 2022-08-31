@@ -23,7 +23,6 @@ class NewsPage extends StatelessWidget {
       scheduleMicrotask(() => print('MT B'));
       return Image.network(link);
     } catch (e) {
-      print("The error in the getimagefromlink is ${e.toString()}");
       return const Text("Sorry we cannot show you image");
     }
   }

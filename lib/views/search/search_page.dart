@@ -7,7 +7,7 @@ import '../constants.dart';
 import 'search_input_field.dart';
 
 class SearchPage extends StatefulWidget {
-  SearchPage({Key? key}) : super(key: key);
+  const SearchPage({Key? key}) : super(key: key);
 
   @override
   State<SearchPage> createState() => _SearchPageState();
@@ -28,20 +28,18 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-      child: Column(children: [
-        const SizedBox(
-          height: 100,
-        ),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 17),
-          child: SearchInputField(
-              controller: _searchController,
-              icon: Icons.search,
-              labelText: "Search here",
-              functiontobecalled: functionToBeCalled),
-        )
-      ]),
-    ));
+        body: Column(children: [
+          const SizedBox(
+            height: 100,
+          ),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 17),
+            child: SearchInputField(
+                controller: _searchController,
+                icon: Icons.search,
+                labelText: "Search here",
+                functiontobecalled: functionToBeCalled),
+          )
+        ]));
   }
 }

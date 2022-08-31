@@ -26,17 +26,12 @@ class DataBaseMethods {
 
   static Future<bool> signUpWithUserNameAndPassword(
       String email, String password) async {
-    print("We are  in signUpWithUserNameAndPassword");
     try {
       UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
-      print("we have crossed line0 in signUpWithUserNameAndPassword");
       User? firebaseuser = result.user;
-      print("we have crossed line1 in signUpWithUserNameAndPassword");
       return true;
     } catch (e) {
-      print(e.toString());
-      print("sorry we cannot move forward with in signUpWithUserNameAndPassword");
       Get.snackbar("error", e.toString());
       return false;
     }

@@ -1,12 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class SearchInputField extends StatelessWidget {
   // const TextInputField({Key? key}) : super(key: key);
   final TextEditingController controller;
   final String labelText;
+  // ignore: prefer_typing_uninitialized_variables
   final icon;
   bool isobsecure;
   final Function functiontobecalled;

@@ -1,18 +1,12 @@
-import 'dart:collection';
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:shortnewsapp/controllers/api_work.dart';
 import 'package:shortnewsapp/models/news_data.dart';
 import 'package:shortnewsapp/views/newspage.dart';
-import 'package:http/http.dart' as http;
 import 'package:shortnewsapp/views/search/search_page.dart';
-
-import 'constants.dart';
-
 class ScrollPageView extends StatefulWidget {
+  const ScrollPageView({Key? key}) : super(key: key);
+
   @override
   State<ScrollPageView> createState() => _ScrollPageViewState();
 }
@@ -52,12 +46,8 @@ class _ScrollPageViewState extends State<ScrollPageView> {
           if (isloading == false) {
             // ignore: unnecessary_null_comparison
             if (list != null) {
-              String contenttobesent = list![index].content!;
-              var topresent =
-                  contenttobesent.length < 600 ? contenttobesent.length : 600;
               return GestureDetector(
                 onHorizontalDragUpdate: (details) {
-                  print(details);
                   if (details.delta.dx > 5) {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => SearchPage()));
