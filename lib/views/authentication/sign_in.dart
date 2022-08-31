@@ -42,7 +42,7 @@ class SignInPage extends StatelessWidget {
           children: [
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: TextInpurField(
+              child: TextInputField(
                   controller: _emailTextEditingController,
                   labelText: "Email",
                   icon: Icons.email),
@@ -52,7 +52,7 @@ class SignInPage extends StatelessWidget {
             ),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: TextInpurField(
+              child: TextInputField(
                   controller: _passwordTextEditingController,
                   labelText: "password",
                   icon: Icons.email),

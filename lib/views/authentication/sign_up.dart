@@ -57,7 +57,7 @@ class SignUpPage extends StatelessWidget {
               ),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: TextInpurField(
+                child: TextInputField(
                     controller: _userNameTextEditingController,
                     labelText: "Username",
                     icon: Icons.person),
@@ -67,7 +67,7 @@ class SignUpPage extends StatelessWidget {
               ),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: TextInpurField(
+                child: TextInputField(
                     controller: _emailTextEditingController,
                     labelText: "Email",
                     icon: Icons.email),
@@ -77,7 +77,7 @@ class SignUpPage extends StatelessWidget {
               ),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: TextInpurField(
+                child: TextInputField(
                     controller: _passwordTextEditingController,
                     labelText: "password",
                     icon: Icons.lock),

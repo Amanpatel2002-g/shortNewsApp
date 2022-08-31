@@ -1,22 +1,22 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-class TextInputField extends StatelessWidget {
+class SearchInputField extends StatelessWidget {
   // const TextInputField({Key? key}) : super(key: key);
   final TextEditingController controller;
   final String labelText;
   final icon;
   bool isobsecure;
-
-  TextInputField({
+  final Function functiontobecalled;
+  SearchInputField({
     Key? key,
     required this.controller,
     required this.labelText,
     this.isobsecure = false,
     required this.icon,
+    required this.functiontobecalled,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -24,17 +24,24 @@ class TextInputField extends StatelessWidget {
       controller: controller,
       decoration: InputDecoration(
         labelText: labelText,
-        prefixIcon: Icon(icon),
+        suffixIcon: GestureDetector(
+            onTap: () => functiontobecalled(),
+            child: Container(
+                padding: const EdgeInsets.only(right: 25),
+                child: Icon(
+                  icon,
+                  size: 35,
+                ))),
         labelStyle: const TextStyle(
           fontSize: 20,
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(5),
-          borderSide: BorderSide(color: Colors.grey),
+          borderRadius: BorderRadius.circular(30),
+          borderSide: const BorderSide(color: Colors.grey),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(5),
-          borderSide: BorderSide(color: Colors.orange),
+          borderRadius: BorderRadius.circular(30),
+          borderSide: const BorderSide(color: Colors.orange),
         ),
       ),
       obscureText: isobsecure,

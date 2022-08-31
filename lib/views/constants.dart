@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:flutter/material.dart';
 
 class ConstantsVariables extends GetxController {
   String testext =
@@ -9,4 +10,9 @@ class ConstantsVariables extends GetxController {
 
   RxBool isUserSignedIn = false.obs;
   RxBool isOnSignInPage = true.obs;
+  RxString tosearch = "india".obs;
+  static var theme = ThemeData.dark().copyWith(
+    scaffoldBackgroundColor: Colors.black,
+  );
+  // theme: ConstantsVariables.theme,
 }
