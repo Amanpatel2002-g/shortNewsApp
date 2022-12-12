@@ -55,7 +55,7 @@ class SignInPage extends StatelessWidget {
               child: TextInputField(
                   controller: _passwordTextEditingController,
                   labelText: "password",
-                  icon: Icons.email),
+                  icon: Icons.lock),
             ),
             const SizedBox(
               height: 40,
