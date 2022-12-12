@@ -5,7 +5,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
-// import 'package:shortnewsapp/views/constants.dart';
 
 class NewsPage extends StatelessWidget {
   String imagelink;
@@ -24,17 +23,12 @@ class NewsPage extends StatelessWidget {
       scheduleMicrotask(() => print('MT B'));
       return Image.network(link);
     } catch (e) {
-      print("The error in the getimagefromlink is ${e.toString()}");
       return const Text("Sorry we cannot show you image");
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    if (imagelink == null) {
-      imagelink =
-          "https://thumbs.dreamstime.com/b/no-image-icon-vector-available-picture-symbol-isolated-white-background-suitable-user-interface-element-205805243.jpg";
-    }
     return Scaffold(
       body: Column(
         mainAxisSize: MainAxisSize.max,
@@ -43,8 +37,11 @@ class NewsPage extends StatelessWidget {
             child: Column(
               children: [
                 Container(
+                  height: 220,
+                  width: MediaQuery.of(context).size.width,
                   decoration:
                       BoxDecoration(borderRadius: BorderRadius.circular(25)),
+                  padding: const EdgeInsets.only(top: 7),
                   child: CachedNetworkImage(
                     imageUrl: imagelink,
                     placeholder: (context, url) {
@@ -54,16 +51,6 @@ class NewsPage extends StatelessWidget {
                         ),
                       );
                     },
-                    // errorWidget: (context, url, error) {
-                    //   // This was the reason for exception being triggered and rendered!
-                    //   debugPrint(error); // TODO: Remove this line!
-                    //   return const Center(
-                    //     child: Text(
-                    //       'Error',
-                    //       style: TextStyle(color: Colors.red),
-                    //     ),
-                    //   );
-                    // },
                   ),
                 ),
                 const SizedBox(
@@ -78,15 +65,16 @@ class NewsPage extends StatelessWidget {
                       Text(
                         headingText,
                         style: GoogleFonts.lato(
-                            fontSize: 19, fontWeight: FontWeight.bold),
+                            fontSize: 25, fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        testText,
-                        // style: const TextStyle(fontSize: 15),
-                        style: GoogleFonts.lato(fontSize: 15),
+                      SingleChildScrollView(
+                        child: Text(
+                          testText,
+                          style: GoogleFonts.lato(fontSize: 20),
+                        ),
                       ),
                     ],
                   ),
@@ -100,20 +88,21 @@ class NewsPage extends StatelessWidget {
               await launchUrl(Uri.parse(articleLink));
             },
             child: Container(
-              height: MediaQuery.of(context).size.height - 400 - 272,
-              width: MediaQuery.of(context).size.width,
-              alignment: Alignment.bottomCenter,
-              decoration:
-                  BoxDecoration(borderRadius: BorderRadius.circular(15)),
-              child: Card(
-                color: Colors.white60,
-                elevation: 5,
-                child: ListTile(title: Text(articleLink)),
+              height: 60,
+              width: MediaQuery.of(context).size.width - 50,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+                color: const Color.fromARGB(255, 240, 225, 169),
+              ),
+              child: const Text(
+                "click here to read the  entire article",
+                style: TextStyle(color: Colors.red, fontSize: 17),
               ),
             ),
           ),
           const SizedBox(
-            height: 10,
+            height: 20,
           ),
         ],
       ),
